@@ -52,28 +52,33 @@ Rhinoceros
 #include <string>
 using namespace std;
 
-void main() {
+int main() {
     int n, m;
     // candidate map
     map<string,string> candidates;
     map<string, int> votes;
 
     cin >> n;
-    for ( int i = 0; i < n; i ++){
+    char _[20];
+    cin.getline(_, 20);
+    while (n--){
         // read the n pairs of lines to populate map
         string candidate, party;
-        cin >> candidate;
-        cin >> party;
+        string temp;
+        getline(cin, candidate);
+        getline(cin, party);
         candidates[candidate] = party;
         votes[candidate] = 0;
     }
+    
     cin >> m;
+    cin.getline(_, 20);
     int max = 0;
-    string winner = "";
+    string winner = "empty";
     for ( int j = 0; j < m; j ++){
         // read the votes
         string candidate;
-        cin >> candidate;
+        getline(cin, candidate);
         if (votes.count(candidate)){
             votes[candidate] += 1;
             if (votes[candidate] > max){
@@ -83,6 +88,6 @@ void main() {
         }
     }
 
-    cout << candidates[winner];
-    return;
+    cout << winner;
+    return 0;
 }
