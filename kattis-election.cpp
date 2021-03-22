@@ -57,9 +57,9 @@ independent
 6
 John Smith
 Marilyn Manson
-Marilyn Manson
 John Smith
-John Smith
+Jane Doe
+Jane Doe
 Marilyn Manson
 
 Output 
@@ -75,14 +75,13 @@ int main() {
     // candidate map
     map<string,string> candidates;
     map<string, int> votes;
-
+    string temp;
     cin >> n;
     char _[20];
-    cin.getline(_, 20);
+    getline(cin, temp);
     while (n--){
         // read the n pairs of lines to populate map
         string candidate, party;
-        string temp;
         getline(cin, candidate);
         getline(cin, party);
         candidates[candidate] = party;
@@ -90,9 +89,9 @@ int main() {
     }
     
     cin >> m;
-    cin.getline(_, 20);
+    getline(cin, temp);
     int max = 0;
-    bool tie = false;
+    bool tie = true;
     string winner = "empty";
     for ( int j = 0; j < m; j ++){
         // read the votes
