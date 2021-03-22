@@ -46,6 +46,24 @@ Marilyn Manson
 
 Output 
 Rhinoceros
+
+3
+Marilyn Manson
+Rhinoceros
+Jane Doe
+Family Coalition
+John Smith
+independent
+6
+John Smith
+Marilyn Manson
+Marilyn Manson
+John Smith
+John Smith
+Marilyn Manson
+
+Output 
+tie
 */
 #include <iostream>
 #include <map>
@@ -74,6 +92,7 @@ int main() {
     cin >> m;
     cin.getline(_, 20);
     int max = 0;
+    bool tie = false;
     string winner = "empty";
     for ( int j = 0; j < m; j ++){
         // read the votes
@@ -82,12 +101,19 @@ int main() {
         if (votes.count(candidate)){
             votes[candidate] += 1;
             if (votes[candidate] > max){
+                tie = false;
                 max = votes[candidate];
                 winner = candidate;
+            } else if (votes[candidate] == max){
+                tie = true;
             }
         }
     }
-
-    cout << winner;
+    
+    if (tie) {
+        cout << "tie";
+    } else {
+        cout << candidates[winner];
+    }
     return 0;
 }
